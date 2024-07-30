@@ -1,0 +1,26 @@
+{% extends 'images/base.html' %} {% load static %} 
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'images/index.css' %}">
+
+<header>
+  <img src="https://cdn.pixabay.com/index/2024/07/25/07-43-06-503_1920x550.jpg" alt="">
+  <p class="hero">Stunning royalty-free images & royalty-free stock</p>
+</header>
+
+<div class="container">
+  {% for image in images %}
+
+      <div class="gallery-item {{ image.width_class }} {{ image.height_class }}">
+          <div class="image">
+            <a href="{% url 'image_details' image.id %}">
+              <img src="{{ image.webformatURL }}" alt="image">
+            </a>
+          </div>
+      </div>
+
+  {% endfor %}
+</div>
+
+
+{% endblock %}
